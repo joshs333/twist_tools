@@ -1,0 +1,22 @@
+<launch>
+    <arg name="output" default="screen" />
+
+    <arg name="default_input" default="/twist" />
+    <arg name="output_topic" default="/cmd_vel" />
+    <arg name="input_topics" default="[/in_1, /in_5]" />
+
+    <node name="twist_mux" pkg="twist_tools" type="twist_mux_node" output="$(arg output)">
+        <param name="default_input"                 type="string"   value="$(arg default_input)" />
+        <param name="output_topic"                  type="string"   value="$(arg output_topic)" />
+        <param name="status_topic"                  type="string"   value="status" />
+        <param name="set_input_service"             type="string"   value="set_input" />
+        <param name="iterate_input_service"         type="string"   value="iterate" />
+        <param name="reverse_iterate_input_service" type="string"   value="reverse_iterate" />
+        <param name="allow_new_topics"              type="bool"     value="true" />
+
+        <rosparam param="input_topics" subst_value="True">
+            $(arg input_topics)
+        </rosparam>
+    </node>
+
+</launch>

@@ -1,0 +1,14 @@
+<launch>
+    <arg name="output" default="screen" />
+
+    <arg name="input_twist" default="/twist_in" />
+    <arg name="output_twist_stamped" default="/twist_stamped_out" />
+    <arg name="stamp_frame_id" default="/twist" />
+
+    <node name="twist_mux" pkg="twist_tools" type="twist_stamper_node" output="$(arg output)">
+        <param name="input_twist"           type="string" value="$(arg input_twist)" />
+        <param name="output_twist_stamped"  type="string" value="$(arg output_twist_stamped)" />
+        <param name="stamp_frame_id"        type="string" value="$(arg stamp_frame_id)" />
+    </node>
+
+</launch>

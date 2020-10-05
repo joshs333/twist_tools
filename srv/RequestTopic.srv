@@ -1,0 +1,5 @@
+string topic
+---
+string previous_topic
+bool success
+bool new_topic
